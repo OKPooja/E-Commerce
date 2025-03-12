@@ -1,5 +1,6 @@
 package com.example.Ecommerce.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,11 +19,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto-generate the primary keys
     private int prodId;
+
     private String name;
     private String description;
     private String brand;
     private String category;
     private BigDecimal price;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-YYYY")
     private Date releasedate;
     private boolean available;
     private int quantity;
