@@ -48,4 +48,10 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/products/{prodId}/image")
+    public ResponseEntity<?> getImageById(@PathVariable int prodId) {
+        Product product = service.getProductById(prodId);
+        byte []imageFile = product.getImageData();
+        return ResponseEntity.ok().body(imageFile);
+    }
 }
