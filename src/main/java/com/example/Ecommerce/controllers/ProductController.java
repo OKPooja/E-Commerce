@@ -72,4 +72,11 @@ public class ProductController {
             return new ResponseEntity<>("Product id doesn't exist", HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/search_products")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword) {
+        System.out.println("Searching with " + keyword);
+        List<Product> products = service.searchProducts(keyword);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }
